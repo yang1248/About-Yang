@@ -9,9 +9,12 @@ dist-ssr
 *.log
 
 # 作品媒体（视频/大图）：体积大且属个人内容，不入 git。
-# 仅保留板块封面占位图（public/works/covers/），其余媒体请自行放置或走 CDN。
+# 保留板块封面和已发布作品的指定资源，其余媒体请自行放置或走 CDN。
 public/works/*
 !public/works/covers/
+!public/works/ai-companion/
+!public/works/campus-delivery/
+!public/works/product-reviews/
 
 # 压缩脚本日志
 scripts/compress-media.log

@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState, type Ref } from 'react'
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
-import ReactMarkdown from 'react-markdown'
+import ReactMarkdown, { defaultUrlTransform } from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
 import { WORKS, SECTION_COVERS, type WorkListItem, type WorkSection, type WorksLang } from '../data/works'
-import { getWorkDoc } from '../data/workDocs'
+import { getWorkDoc, workMediaUrl } from '../data/workDocs'
 
 const EASE = [0.22, 1, 0.36, 1]
 
@@ -125,7 +125,7 @@ function WorkDetail({
   const [bannerError, setBannerError] = useState(false)
   const doc = getWorkDoc(item.slug)
   const title = (doc && doc.title) || item.name
-  const banner = doc && doc.banner
+  const banner = doc?.banner ? workMediaUrl(doc.banner) : undefined
   // 有 md 详情时展示完整信息；无 md 时详情页只保留标题 + 统一占位文案
   const link = doc ? doc.link || item.link : null
   const tags = doc ? doc.tags || item.tags : null
@@ -180,7 +180,11 @@ function WorkDetail({
 
           {doc && doc.body ? (
             <div className="wk-md">
-              <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+              <ReactMarkdown
+                remarkPlugins={[remarkGfm]}
+                rehypePlugins={[rehypeRaw]}
+                urlTransform={(url) => workMediaUrl(defaultUrlTransform(url))}
+              >
                 {doc.body}
               </ReactMarkdown>
             </div>

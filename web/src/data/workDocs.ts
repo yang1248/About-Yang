@@ -10,6 +10,7 @@
 // 正文（frontmatter 之后）写 markdown：文字 / 图 ![](...) / 视频 <video src=...>。
 //
 // 资源（图/视频）放到 public/works/ 下，用 /works/... 绝对路径引用。
+// 渲染时通过 workMediaUrl 加上部署前缀，兼容子目录部署。
 // 列表（works.ts 的 item）通过 `slug` 关联到此处的 md；没有 slug 的 item 仍走占位详情。
 
 export interface WorkDoc {
@@ -66,4 +67,8 @@ for (const path in files) {
 
 export function getWorkDoc(slug?: string): WorkDoc | null {
   return slug ? docs[slug] || null : null
+}
+
+export function workMediaUrl(url: string): string {
+  return url.startsWith('/works/') ? `${import.meta.env.BASE_URL}${url.slice(1)}` : url
 }

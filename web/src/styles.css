@@ -922,7 +922,7 @@ canvas {
 .wk-card-cover img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
 .wk-card-cover-ph {
@@ -1149,6 +1149,11 @@ canvas {
 }
 
 /* ---------- 作品全屏沉浸详情 ---------- */
+/* 阅读项目截图时暂停胶片叠层，关闭详情后恢复场景质感。 */
+body:has(.wk-detail) [data-three-noise-overlay] {
+  visibility: hidden;
+}
+
 .wk-detail-backdrop {
   position: fixed;
   inset: 0;
@@ -1214,21 +1219,22 @@ canvas {
   transform: rotate(90deg);
 }
 
-/* 顶部 banner：图铺满；缺省时低饱和墨绿渐变占位 + 虚字 */
+/* 顶部截图保留完整比例；缺省时使用渐变占位。 */
 .wk-detail-banner {
   position: relative;
-  height: clamp(180px, 42vh, 460px);
   background: #1d2124;
 }
 .wk-detail-banner img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  max-height: 60vh;
+  object-fit: contain;
   display: block;
 }
 .wk-detail-banner.is-ph {
   display: grid;
   place-items: center;
+  height: clamp(180px, 42vh, 460px);
   padding: 6vh 8vw;
   background: radial-gradient(120% 120% at 30% 20%, rgba(48, 55, 60, 0.5), rgba(29, 33, 36, 0.98));
 }
@@ -1330,11 +1336,24 @@ canvas {
 .wk-md img,
 .wk-md video {
   display: block;
-  width: 100%;
+  width: auto;
+  max-width: 100%;
   height: auto;
-  margin: 1.6em 0;
+  margin: 1.6em auto;
   border-radius: 12px;
   border: 1px solid var(--line);
+}
+.wk-md figure {
+  margin: 1.6em 0;
+}
+.wk-md figure img {
+  margin-bottom: 0.6em;
+}
+.wk-md figcaption {
+  color: var(--muted);
+  font-size: 0.85em;
+  line-height: 1.6;
+  text-align: center;
 }
 .wk-md blockquote {
   margin: 1.4em 0;
