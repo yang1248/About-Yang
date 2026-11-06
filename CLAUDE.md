@@ -4,11 +4,12 @@ Conventions for **AI coding assistants** (Claude Code / Cursor / Copilot, etc.) 
 
 ## Repo layout (read this first)
 
-The repo has three parts:
+The repo has two parts:
 
 - **[`web/`](web)** — the front-end app (every code convention in this file lives here).
-- **[`blender/`](blender)** — the 3D scene source `sen.blend` (character + camera animation + focus-anchor empties). The source you edit before exporting the glb.
 - **[`tutor/`](tutor)** — fork-it-yourself tutorials for users (deployment, stickers, …; more coming).
+
+The browser loads the exported model at `web/public/models/me.glb`. Blender source files are not included or required for builds or runtime.
 
 **Every code / asset path below is relative to `web/`** (e.g. `src/App.tsx` means `web/src/App.tsx`), and npm commands run inside `web/`; docs like `LICENSE` / `NOTICE` / `CLAUDE.md` sit at the repo root.
 
@@ -57,7 +58,7 @@ Every tunable in the scene (lights, camera, depth-of-field, Bloom, character pos
 
 ## Making it yours after a fork
 
-- Swap the 3D character: replace `public/models/me.glb` (its source is `blender/sen.blend` at the repo root — edit it in Blender and export the glb), or rewrite `Scene.tsx` to use your own scene. The code looks these up in the glb **by object name**; whatever is missing, that feature breaks:
+- Swap the 3D character: replace `public/models/me.glb` with an export from your own model source, or rewrite `Scene.tsx` to use your own scene. Keep editable source files separately; the app only needs the exported glb. The code looks these up in the glb **by object name**; whatever is missing, that feature breaks:
   - **Camera + camera-animation clip named `CameraAction`** — the scroll-driven camera path (played by wiping frame-by-frame through `useGLTF`'s `animations`). Its total frame count is read at runtime (24fps), not hardcoded.
   - **`focus-start`** (or `focus-0`) — the hero's starting focus anchor (an empty); both names are accepted.
   - **The timeline focus anchors** (empties) — one per résumé entry, listed in order in **`src/data/focusPoints.ts`** (`FOCUS_POINTS`, the single source of truth shared by `Scene.tsx` and `Resume.tsx`). The count is dynamic: change the list + `Resume.tsx`'s entries together and everything (node count, frame ranges) adapts. This repo ships `focus-1 / focus-2 / focus-3 / focus-4 / focus-5` (the hero anchor uses `focus-0`).

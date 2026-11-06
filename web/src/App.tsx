@@ -168,7 +168,7 @@ export default function App() {
         <span className="hero-mark br">+</span>
         <div className="hero-meta hm-tl">
           <span className="hm-name">Yangxinbin 杨信彬</span>
-          <span>Creative Technologist</span>
+          <span>Full-stack Developer</span>
         </div>
         <div className="hero-meta hm-tr">Portfolio — 2026</div>
         <div className="hero-meta hm-bl">Code · Art · Play</div>

@@ -12,8 +12,7 @@ permission — please replace them with your own if you fork this project.
 ## Not covered by MIT (personal content — do not reuse)
 
 - **Name & likeness** — "Sen" / "SEN" / "Sen Zheng 郑越升", the 3D character
-  model depicting the author `web/public/models/me.glb`, and its Blender source
-  `blender/sen.blend`.
+  model depicting the author `web/public/models/me.glb`.
 - **Résumé data** — education, employers, clients, roles, and follower counts in
   `web/src/ui/Resume.tsx`.
 - **Work content** — titles, descriptions, and write-ups in
@@ -42,7 +41,7 @@ redistributing:
 但仓库同时是作者本人的作品集，以下**个人内容与素材**版权归 Sen Zheng（SEN）所有，
 **不在 MIT 授权范围内**，请勿直接复用——fork 后请替换为你自己的内容：
 
-- 姓名与肖像：「SEN / Sen Zheng 郑越升」、人物模型 `web/public/models/me.glb` 及其 Blender 源 `blender/sen.blend`
+- 姓名与肖像：「SEN / Sen Zheng 郑越升」、人物模型 `web/public/models/me.glb`
 - 简历数据（`web/src/ui/Resume.tsx`）、作品文案（`web/src/data/works.ts`、`web/src/content/works/*.md`）
 - 品牌 logo 与图片（`web/public/images/*`、ZOOOP 字标），及社交主页链接
 
