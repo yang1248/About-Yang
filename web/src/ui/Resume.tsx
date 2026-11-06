@@ -120,7 +120,7 @@ const RESUME: Record<'en' | 'zh', { title: string; entries: ResumeEntry[] }> = {
         role: '移动互联应用技术 · 2027 届应届毕业生',
         points: [
           '全栈开发工程师，专注后台系统与移动端 App 方向。',
-          '两段实习累计 7 个月开发经验，擅长性能优化与组件库建设。',
+          '两段实习累计 7 个月开发经验，擅长全栈开发与 AI 辅助工程。',
         ],
       },
       {
@@ -164,9 +164,9 @@ const RESUME: Record<'en' | 'zh', { title: string; entries: ResumeEntry[] }> = {
           {
             heading: '技术栈',
             items: [
-              '熟练掌握：JavaScript / TypeScript、Vue 3、Spring Boot、MySQL、Flutter / Dart、Pinia、Vite、SCSS。',
-              '熟悉：Java、Node.js、Redis、Express、Next.js、Docker、Nginx、ECharts、Webpack、小程序开发、单元测试。',
-              '了解：WebGL、Three.js、低代码平台设计。',
+              '前端：Vue 3 / Vite / TypeScript / React/JavaScript / HTML/ Flutter / Arkts / SCSS / 微信小程序',
+              '后端：Python / Java / FastAPI / Node.js / Express.js / MongoDB / JWT / Spring Boot /Redis / MySQL',
+              '部署：宝塔面板/Vercel/Render/TiDB Cloud/域名备案/DNS解析/HTTPS/SSL配置',
             ],
           },
           {
