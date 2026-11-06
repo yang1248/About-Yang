@@ -1,4 +1,4 @@
-<h1 align="center">About Sen · 3D 个人简历</h1>
+<h1 align="center">About Yangxinbin · 3D 个人简历</h1>
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/code-MIT-blue.svg?style=flat" alt="License MIT"></a>
@@ -89,7 +89,7 @@ npm run lint       # ESLint
 
 ## 素材与媒体
 
-- **作品详情默认是占位。** 开源版本不含作者的作品详情与媒体：画廊保留各板块 / 作品**标题**，点开详情统一显示占位文案（改 `works.ts` 的 `detailPlaceholder / phImageLabel / phButtonLabel`）。想填充某个作品，写一个 `src/content/works/<slug>.md` 即可自动渲染成完整详情。
+- **作品模块目前全部为占位。** 画廊保留 4 个编号板块，作品名称、封面和详情均为中性占位，不展示原作者的作品、奖项、播放量或外链。修改 `src/data/works.ts` 可填充中英文列表及占位文案；添加与 item 的 `slug` 对应的 `src/content/works/<slug>.md` 可渲染完整详情。`SECTION_COVERS` 默认为空，按板块 `id` 添加你自己的封面路径后即可显示图片。
 - **`public/works/` 默认不入 git**（体积大且属个人内容，见 `.gitignore`）——仅保留 4 张板块封面图 `public/works/covers/*.jpg`；其余媒体请自行放置或走 CDN，用 `/works/...` 绝对路径引用。
 - `public/models/`、`public/images/`、`public/textures/`、`public/fonts/` 里的素材已入库。其中人物模型、品牌 logo、图片属于个人内容（见 [`NOTICE`](NOTICE)）；字体 / HDR 为第三方素材，复用前请各自核对许可。
 - `scripts/compress-media.sh` 用 ffmpeg 原地压缩 `public` 下的图 / 视频（最大宽 1920，视频 H.264 ~2Mbps），仅当压得更小才覆盖。

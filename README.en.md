@@ -1,4 +1,4 @@
-<h1 align="center">About Sen · 3D Personal Résumé</h1>
+<h1 align="center">About Yangxinbin · 3D Personal Résumé</h1>
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/code-MIT-blue.svg?style=flat" alt="License MIT"></a>
@@ -89,7 +89,7 @@ Work details use minimal markdown: one `.md` per work, linked via the `slug` on 
 
 ## Assets & Media
 
-- **Work details are placeholders by default.** The open-source version ships without the author's work details or media: the gallery keeps each section / work **title**, and opening a detail shows a shared placeholder (change `detailPlaceholder / phImageLabel / phButtonLabel` in `works.ts`). To fill one in, write a `src/content/works/<slug>.md` and it renders as a full detail.
+- **The entire Works section currently uses placeholders.** The gallery keeps four numbered sections with neutral names, covers, and details, without the original author's projects, awards, view counts, or external links. Edit `src/data/works.ts` for bilingual lists and placeholder copy; add `src/content/works/<slug>.md` matching an item's `slug` for full details. `SECTION_COVERS` is empty by default; add your own cover paths keyed by section `id` to display images.
 - **`public/works/` is not tracked by git by default** (large and personal, see `.gitignore`) — only the 4 section covers `public/works/covers/*.jpg` are kept; place other media yourself or serve it from a CDN, referenced with `/works/...` absolute paths.
 - Assets in `public/models/`, `public/images/`, `public/textures/`, `public/fonts/` are tracked. Among them the character model, brand logos, and images are personal content (see [`NOTICE`](NOTICE)); fonts / HDR are third-party — check their licenses before reuse.
 - `scripts/compress-media.sh` uses ffmpeg to compress images / videos under `public` in place (max width 1920, H.264 video ~2Mbps), overwriting only when the result is smaller.

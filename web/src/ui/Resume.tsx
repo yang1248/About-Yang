@@ -1,35 +1,29 @@
 import { motion } from 'framer-motion'
-import { ZooopLogo } from './ZooopLogo'
 import { SOCIAL_ICONS } from './SocialIcons'
 import { FOCUS_POINTS } from '../data/focusPoints'
 
-const SOCIAL_LINKS = [
+interface SocialLink {
+  id: keyof typeof SOCIAL_ICONS
+  label: string
+  href: string
+}
+
+const SOCIAL_LINKS: SocialLink[] = [
   {
-    id: 'douyin',
-    label: '抖音',
-    href: 'https://www.douyin.com/user/MS4wLjABAAAAlmQDgHf0NlbsjrfWENm8LyrIikxSRRq7mzlzQSIStQJkV7Ju52B6A55zw5TUDU5d',
-  },
-  {
-    id: 'bilibili',
-    label: 'B站',
-    href: 'https://space.bilibili.com/275344092?spm_id_from=333.937.0.0',
-  },
-  {
-    id: 'xiaohongshu',
-    label: '小红书',
-    href: 'https://www.xiaohongshu.com/user/profile/5ceba8c8000000000502fd69',
+    id: 'github',
+    label: 'GitHub · yang1248',
+    href: 'https://github.com/yang1248',
   },
 ]
 
 // 履历数据（双语）。英文为译稿，可按需润色。
 interface ResumeGroup {
   heading?: string
-  logo?: string
   logoImg?: string
   sub?: string
   link?: string
   items?: string[]
-  links?: { id: string; label: string; href: string }[]
+  links?: SocialLink[]
 }
 interface ResumeEntry {
   period: string
@@ -44,49 +38,76 @@ const RESUME: Record<'en' | 'zh', { title: string; entries: ResumeEntry[] }> = {
     title: 'Résumé',
     entries: [
       {
-        period: '2013 – 2017',
-        place: 'Sun Yat-sen University',
-        role: 'B.S. in Software Engineering',
-      },
-      {
-        period: '2017 – 2020',
-        place: 'HOTSAR Studio · Shanghai',
-        role: 'Co-founder',
-        logo: { src: `${import.meta.env.BASE_URL}images/hotsar.jpg`, alt: 'HOTSAR' },
+        period: '2024.09 – 2027.06',
+        place: 'Shenzhen Polytechnic University',
+        role: 'Mobile Internet Application Technology · Class of 2027',
         points: [
-          'Co-founder · team of 20+',
-          'Clients: Alibaba brands, Tencent, NetEase, DiDi, China Resources, McDonald’s…',
-          'Work: development / creative direction / animation / team management',
+          'Full-stack developer focused on admin systems and mobile apps.',
+          'Seven months of development experience across two internships, with strengths in performance optimization and component libraries.',
         ],
       },
       {
-        period: '2020 – 2025',
-        place: 'Bad Printer Studio · Shenzhen',
-        role: 'Founder',
-        logo: { src: `${import.meta.env.BASE_URL}images/bp.png`, alt: 'Bad Printer Studio' },
+        period: '2026.03 – 2026.07',
+        place: 'Shenzhen Caixin Testing Technology Co., Ltd.',
+        role: 'AI Full-stack Development Intern',
         points: [
-          'Founder · team of 14',
-          'Clients: Honor of Kings / Trip.com / ByteDance / Kuaishou / VIVO / Tecno / Xiaomi / IM Motors…',
-          'Work: team management / creative direction / animation / development',
+          'Independently built a Vue 3 + Node.js desktop admin system and H5 mobile app for chip-testing operations, with RBAC covering three roles and 20+ permissions.',
+          'Implemented an eight-state order lifecycle, inventory discrepancy tracking, bilingual report generation and downloads, photo uploads, shipment tracking, and WeChat Pay.',
+          'Supported 3,000+ orders and 100+ users; reduced average order processing time from 40 to 15 minutes and manual follow-up work by about 70%.',
+          'Moved three-party collaboration online, enabled end-to-end order tracking, and shortened delivery time by about 30% with AI-assisted requirements analysis and development.',
         ],
       },
       {
-        period: '2025 – Now',
-        place: 'Content Creator',
+        period: '2026.07 – 2026.09',
+        place: 'Shenzhen Jiangyun Intelligent Co., Ltd.',
+        role: 'Full-stack Development Intern',
+        points: [
+          'Independently developed and iterated six core client pages for AIGC photo-printing devices, adapting to five device models and resolutions with no related customer complaints after launch.',
+          'Internationalized eight admin modules with 300+ translation entries; built device management and style-library modules supporting status monitoring and batch operations for 100 devices, and fixed 20+ production bugs.',
+          'Built a shared logging SDK, increased instrumentation coverage from 60% to 95%, and reduced average device-issue diagnosis time from two hours to 30 minutes.',
+          'Led the bilingual website redesign: reduced initial load time from 3.2s to 1.5s, raised Lighthouse performance from 68 to 92, and increased average monthly visits by 40%.',
+        ],
+      },
+      {
+        period: 'Project Experience',
+        place: 'Shopping Mall App',
+        role: 'Independent Full-stack Development',
+        points: [
+          'Built a hybrid app with Flutter (GetX / Dio / WebView), Vue 3 + Vite, and Spring Cloud microservices (Nacos / Gateway / Spring Boot), integrated with Elasticsearch, RabbitMQ, and MySQL.',
+          'Implemented the Flutter home feed, categories, cart, login, and profile, plus seven Vue 3 pages covering search, products, checkout, balance payment, and orders.',
+          'Designed a JSBridge protocol that proxies H5 HTTP requests through Flutter, avoiding local file cross-origin restrictions; bundled single-file H5 builds as local app assets.',
+          'Standardized Dio networking, token handling, global 401 redirects, wrapped and raw JSON responses, and monetary amounts in cents.',
+          'Designed eventual payment consistency using asynchronous MQ order updates, frontend polling, timeout handling, and exception reconciliation.',
+        ],
+      },
+      {
+        period: 'Skills & Certifications',
+        place: 'Full-stack Development · AI-assisted Engineering',
         groups: [
           {
-            heading: '小郑还挺忙',
-            logoImg: `${import.meta.env.BASE_URL}images/buzyzheng.png`,
-            sub: 'tech-DIY creator',
-            items: ['120K on Douyin · 87K on Bilibili · 23K on Xiaohongshu'],
+            heading: 'Technical Stack',
+            items: [
+              'Proficient: JavaScript / TypeScript, Vue 3, Spring Boot, MySQL, Flutter / Dart, Pinia, Vite, SCSS.',
+              'Familiar: Java, Node.js, Redis, Express, Next.js, Docker, Nginx, ECharts, Webpack, mini-program development, and unit testing.',
+              'Basic knowledge: WebGL, Three.js, and low-code platform design.',
+            ],
+          },
+          {
+            heading: 'AI-assisted Engineering',
+            items: [
+              'Use Codex and Claude for requirements analysis, code and unit-test generation, code review, and documentation; experienced in PRD decomposition, API documentation, prompt engineering, and context management.',
+            ],
+          },
+          {
+            heading: 'Certifications',
+            items: ['CET-4 · Huawei HCIA-AI · AI Agent Technology and Applications Micro-certification'],
+          },
+          {
+            heading: 'GitHub · yang1248',
+            link: SOCIAL_LINKS[0].href,
             links: SOCIAL_LINKS,
           },
         ],
-      },
-      {
-        period: '2026 – Now',
-        place: 'Indie Developer',
-        groups: [{ logo: 'zooop', sub: 'AI creation platform', link: 'https://zooop.ai/' }],
       },
     ],
   },
@@ -94,49 +115,76 @@ const RESUME: Record<'en' | 'zh', { title: string; entries: ResumeEntry[] }> = {
     title: 'Résumé',
     entries: [
       {
-        period: '2013 – 2017',
-        place: '中山大学',
-        role: '软件工程 · 本科',
-      },
-      {
-        period: '2017 – 2020',
-        place: 'HOTSAR 工作室 · 上海',
-        role: '联合创始人',
-        logo: { src: `${import.meta.env.BASE_URL}images/hotsar.jpg`, alt: 'HOTSAR' },
+        period: '2024.09 – 2027.06',
+        place: '深圳职业技术大学',
+        role: '移动互联应用技术 · 2027 届应届毕业生',
         points: [
-          '联合创始人，团队人数 20+',
-          '服务客户：阿里系品牌、腾讯、网易、滴滴、华润、麦当劳…',
-          '负责：技术开发 / 创意策划 / 动画制作 / 团队管理',
+          '全栈开发工程师，专注后台系统与移动端 App 方向。',
+          '两段实习累计 7 个月开发经验，擅长性能优化与组件库建设。',
         ],
       },
       {
-        period: '2020 – 2025',
-        place: '坏打印机工作室 · 深圳',
-        role: '创始人',
-        logo: { src: `${import.meta.env.BASE_URL}images/bp.png`, alt: '坏打印机工作室' },
+        period: '2026.03 – 2026.07',
+        place: '深圳采芯检测科技有限公司',
+        role: 'AI 全栈开发工程师 · 实习',
         points: [
-          '创始人，团队人数 14',
-          '服务客户：王者荣耀 / 携程 / 字节 / 快手 / VIVO / 传音 / 小米…',
-          '负责：团队管理 / 创意策划 / 动画制作 / 技术开发',
+          '基于 Vue 3 + Node.js 独立搭建芯片检测业务 PC 后台与 H5 移动端，设计覆盖客户、物流、检测三类角色及 20+ 权限点的 RBAC 权限体系。',
+          '实现订单 8 个状态节点的全生命周期流转、入库差异记录、中英文检测报告生成与下载，并对接照片上传、物流查询和微信支付。',
+          '稳定支撑 3000+ 订单、100+ 三方用户使用；订单平均处理时长由 40 分钟缩短至 15 分钟，人工跟单工作量减少约 70%。',
+          '将三方协同从微信群迁移至线上平台，实现订单全流程追踪；借助 AI 辅助需求梳理与开发，交付周期缩短约 30%，双语能力支撑香港及国际业务拓展。',
         ],
       },
       {
-        period: '2025 – 至今',
-        place: '自媒体博主',
+        period: '2026.07 – 2026.09',
+        place: '深圳匠韵智能有限公司',
+        role: '全栈开发工程师 · 实习',
+        points: [
+          '独立开发与迭代 AIGC 拍照打印设备的答题、分享、协议等 6 个核心客户端页面，适配 5 种设备机型与分辨率，上线后相关功能零客诉。',
+          '完成后台 8 个业务模块的国际化改造，维护 300+ 翻译词条；开发设备管理与风格库，支持 100 台设备在线监控及批量操作，修复 20+ 线上 Bug。',
+          '封装统一日志 SDK，埋点覆盖率由 60% 提升至 95%，设备问题平均定位时长由 2 小时缩短至 30 分钟。',
+          '主导官网中英文双语改版，首屏加载由 3.2s 优化至 1.5s，Lighthouse 性能评分由 68 提升至 92，月均访问量提升 40%。',
+        ],
+      },
+      {
+        period: '项目经历',
+        place: '购物商城 App',
+        role: '独立全栈开发',
+        points: [
+          '采用 Flutter（GetX / Dio / WebView）、Vue 3 + Vite 与 Spring Cloud 微服务（Nacos / Gateway / Spring Boot），对接 Elasticsearch、RabbitMQ 和 MySQL。',
+          'Flutter 实现首页瀑布流、分类、购物车、登录与个人中心；Vue 3 实现搜索、商品列表与详情、订单确认、余额支付、订单列表与详情共 7 个页面。',
+          '自研 JSBridge，由 Flutter 原生侧代理 H5 全部 HTTP 请求，规避本地 file:// 页面跨域限制；H5 单文件内联构建后随 App 本地加载。',
+          '封装 Dio 统一网络层，支持 Token 自动携带与 401 全局拦截，兼容包装响应和裸 JSON，统一金额以分为单位的接口契约。',
+          '设计支付最终一致性方案：MQ 异步更新订单，前端轮询确认，结合超时兜底与异常对账处理状态不一致。',
+        ],
+      },
+      {
+        period: '技能与认证',
+        place: '全栈开发 · AI 辅助工程',
         groups: [
           {
-            heading: '小郑还挺忙',
-            logoImg: `${import.meta.env.BASE_URL}images/buzyzheng.png`,
-            sub: '科技 DIY 博主',
-            items: ['抖音 12 万 · B站 8.7 万 · 小红书 2.3 万 关注'],
+            heading: '技术栈',
+            items: [
+              '熟练掌握：JavaScript / TypeScript、Vue 3、Spring Boot、MySQL、Flutter / Dart、Pinia、Vite、SCSS。',
+              '熟悉：Java、Node.js、Redis、Express、Next.js、Docker、Nginx、ECharts、Webpack、小程序开发、单元测试。',
+              '了解：WebGL、Three.js、低代码平台设计。',
+            ],
+          },
+          {
+            heading: 'AI 赋能',
+            items: [
+              '熟练使用 Codex、Claude，将 AI 应用于需求梳理、代码与单元测试生成、代码审查及文档编写；掌握 PRD 拆解、接口文档生成、Prompt 工程与上下文管理。',
+            ],
+          },
+          {
+            heading: '技能证书',
+            items: ['CET-4 · 华为 HCIA-AI 技能证书 · AI Agent 技术与应用微认证'],
+          },
+          {
+            heading: 'GitHub · yang1248',
+            link: SOCIAL_LINKS[0].href,
             links: SOCIAL_LINKS,
           },
         ],
-      },
-      {
-        period: '2026 – 至今',
-        place: '独立开发',
-        groups: [{ logo: 'zooop', sub: 'AI 创作平台', link: 'https://zooop.ai/' }],
       },
     ],
   },
@@ -157,18 +205,7 @@ const itemV = {
 }
 
 function Group({ group }: { group: ResumeGroup }) {
-  const heading =
-    group.logo === 'zooop' ? (
-      <a
-        className="zooop-logo-link"
-        href={group.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="ZOOOP"
-      >
-        <ZooopLogo className="zooop-logo" animated />
-      </a>
-    ) : group.link ? (
+  const heading = group.link ? (
       <a className="about-link" href={group.link} target="_blank" rel="noopener noreferrer">
         {group.heading}
       </a>
@@ -197,7 +234,7 @@ function Group({ group }: { group: ResumeGroup }) {
       {group.links && (
         <div className="tl-logos">
           {group.links.map((l) => {
-            const Icon = SOCIAL_ICONS[l.id as keyof typeof SOCIAL_ICONS]
+            const Icon = SOCIAL_ICONS[l.id]
             return (
               <a
                 key={l.id}
